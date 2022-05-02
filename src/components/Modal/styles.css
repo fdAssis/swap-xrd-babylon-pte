@@ -1,0 +1,71 @@
+.react-modal-overlay{
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-modal-content{
+  width: 400px;
+  height: 292px;
+  padding: 1rem;
+  max-width: 736px;
+  border-radius: 0.5rem;
+  background: #1A202C;
+
+  overflow-x: hidden;
+
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-title{
+  color: #ffffff;
+  font-size: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-inline: auto;
+  font-weight: bold;
+}
+
+
+.modal-subtitle{
+  color: #5f6b7e;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.modal-subtitle .amount-token {
+  color: #51a2ff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.modal-subtitle .token-symbol {
+  color: #ffff;
+  font-weight: bold;
+}
+.modal-subtitle-two{
+  color: #5f6b7e;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-inline: auto;
+  font-weight: 500;
+  text-align: center;
+}
