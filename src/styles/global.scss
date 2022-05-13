@@ -1,0 +1,44 @@
+$font : 'Roboto',
+sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #12161F;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5f6b7e;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  transition: 1s;
+  background: #8e99ab;
+}
+
+
+body {
+  font-family: $font;
+  background-image: url("https://assets.website-files.com/6053f7fca5bf627283b582c2/60ba5985f394bf1012c0c83a_Comp 1 - v2-poster-00001.jpg");
+}
