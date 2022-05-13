@@ -1,0 +1,48 @@
+button {
+  display: inline-flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 10px;
+  line-height: 1.2;
+  height: 38px;
+  padding-inline: 10px;
+  margin-top: 10px;
+  background: #1A202C;
+  transition: 1s;
+  cursor: pointer;
+
+  &:hover {
+    background: #12161F;
+  }
+
+  div {
+    display: flex;
+    align-self: center;
+    width: 100%;
+
+    span {
+      color: #fff;
+      font-weight: bold;
+      margin-right: 2px;
+    }
+
+    #amount-token-swap {
+      color: #51a2ff;
+      font-weight: bold;
+      margin: 0 2px;
+    }
+
+    #value-money-token {
+      color: #5f6b7e;
+      font-weight: 500;
+      margin: 0 2px;
+    }
+  }
+
+
+}
