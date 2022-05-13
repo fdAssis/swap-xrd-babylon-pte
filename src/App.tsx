@@ -3,16 +3,17 @@ import { useEffect, useState } from "react";
 import { ResponseModal } from "./components/Modal";
 import { useModalContex } from "./hooks/ModalContrext";
 
-import xrdImage from "./img/xrd.png";
-import arrowIcon from "./img/switch_horizontal.svg";
-import radBralls from "./img/RAD-BRALLS.jpg";
+import xrdImage from "../src/assets/img/xrd.png";
+import arrowIcon from "../src/assets/img/switch_horizontal.svg";
+import radBralls from "../src/assets/img/RAD-BRALLS.jpg";
 import { DefaultApi, ManifestBuilder } from "pte-sdk";
 
-import loading from "./img/loading.json";
-import error from "./img/error.json";
-import success from "./img/success.json";
+import loading from "../src/assets/img/loading.json";
+import error from "../src/assets/img/error.json";
+import success from "../src/assets/img/success.json";
 
 import "./app.css";
+import { Input } from "./components/Input";
 
 interface Anima {
   animation: any;
@@ -184,61 +185,29 @@ export function App() {
           </div>
           <div className="card-content">
             <div className="card-content-child">
-              <div className="card-content-info">
-                <p>From</p>
-                <div></div>
-                <div className="card-content-balance">
-                  <span>Balance: {machineBalance}</span>
-                </div>
-              </div>
-              <div className="card-content-input">
-                <div>
-                  <input
-                    type="number"
-                    placeholder="0.0"
-                    min={0}
-                    value={fromToken}
-                    onChange={(e) =>
-                      handleCalSwapFromTo(parseFloat(e.target.value))
-                    }
-                  />
-                  <div className="card-content-input-token">
-                    <img src={xrdImage} alt="" />
-                    <span>XRD</span>
-                  </div>
-                </div>
-              </div>
+              <Input
+                balance={machineBalance}
+                icon={xrdImage}
+                handleCalSwapFromTo={handleCalSwapFromTo}
+                opt="From"
+                opToken={fromToken}
+                tokenName="XRD"
+              />
             </div>
             <div className="arrow-icon">
               <div className="arrow-icon-child">
                 <img src={arrowIcon} alt="" />
               </div>
             </div>
-            <div id="input-to" className="card-content-child">
-              <div className="card-content-info">
-                <p>To (estimated)</p>
-                <div></div>
-                <div className="card-content-balance">
-                  <span>Balance: {userBalance === NaN ? 0 : userBalance}</span>
-                </div>
-              </div>
-              <div className="card-content-input">
-                <div>
-                  <input
-                    type="number"
-                    placeholder="0.0"
-                    min={0}
-                    value={toToken}
-                    onChange={(e) =>
-                      handleCalSwapToFron(parseFloat(e.target.value))
-                    }
-                  />
-                  <div className="card-content-input-token">
-                    <img id="bralls" src={radBralls} alt="" />
-                    <span>BRA</span>
-                  </div>
-                </div>
-              </div>
+            <div className="card-content-child">
+              <Input
+                balance={userBalance === NaN ? 0 : userBalance}
+                handleCalSwapFromTo={handleCalSwapToFron}
+                opt="To"
+                icon={radBralls}
+                opToken={toToken}
+                tokenName="BRA"
+              />
             </div>
 
             <button
