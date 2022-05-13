@@ -1,23 +1,23 @@
-import { getAccountAddress, signTransaction } from "pte-browser-extension-sdk";
 import { useEffect, useState } from "react";
-import { ResponseModal } from "./components/Modal";
-import { useModalContex } from "./hooks/ModalContrext";
-
-import xrdImage from "../src/assets/img/xrd.png";
-import arrowIcon from "../src/assets/img/switch_horizontal.svg";
-import radBralls from "../src/assets/img/RAD-BRALLS.jpg";
+import { getAccountAddress, signTransaction } from "pte-browser-extension-sdk";
 import { DefaultApi, ManifestBuilder } from "pte-sdk";
 
-import loading from "../src/assets/img/loading.json";
-import error from "../src/assets/img/error.json";
-import success from "../src/assets/img/success.json";
-
-import "./app.css";
 import { Input } from "./components/Input";
+import { Details } from "./components/Details";
+import { SwapInfo } from "./components/SwapInfo";
+import { Navbar } from "./components/Navbar";
+import { ResponseModal } from "./components/Modal";
 
-interface Anima {
-  animation: any;
-}
+import { useModalContex } from "./hooks/ModalContrext";
+
+import success from "../src/assets/img/success.json";
+import error from "../src/assets/img/error.json";
+import loading from "../src/assets/img/loading.json";
+import radBralls from "../src/assets/img/RAD-BRALLS.jpg";
+import arrowIcon from "../src/assets/img/switch_horizontal.svg";
+import xrdImage from "../src/assets/img/xrd.png";
+
+import "./styles/app.scss";
 
 export function App() {
   const page = "swap";
@@ -157,98 +157,53 @@ export function App() {
       />
       <div className="main">
         <div className="card">
-          <div className="card-header">
-            <div className="header-titles">
-              <p>
-                <div className={page}>Swap</div>
-              </p>
-              <p>
-                <div>Liquidity</div>
-              </p>
-            </div>
-            <div className="space-box"></div>
-            <div
-              className={
-                connectedWallet
-                  ? `header-wallet-address-connected`
-                  : `header-wallet-address-no-connected`
-              }
-            >
-              <p>
-                {connectedWallet
-                  ? accountAddress.slice(0, 5) +
-                    "..." +
-                    accountAddress.slice(-5)
-                  : "account"}
-              </p>
-            </div>
-          </div>
+          <Navbar
+            accountAddress={accountAddress}
+            connectedWallet={connectedWallet}
+            page={page}
+          />
           <div className="card-content">
-            <div className="card-content-child">
-              <Input
-                balance={machineBalance}
-                icon={xrdImage}
-                handleCalSwapFromTo={handleCalSwapFromTo}
-                opt="From"
-                opToken={fromToken}
-                tokenName="XRD"
-              />
-            </div>
+            <Input
+              balance={machineBalance}
+              icon={xrdImage}
+              handleCalSwapFromTo={handleCalSwapFromTo}
+              opt="From"
+              opToken={fromToken}
+              tokenName="XRD"
+            />
+
             <div className="arrow-icon">
-              <div className="arrow-icon-child">
-                <img src={arrowIcon} alt="" />
-              </div>
-            </div>
-            <div className="card-content-child">
-              <Input
-                balance={userBalance === NaN ? 0 : userBalance}
-                handleCalSwapFromTo={handleCalSwapToFron}
-                opt="To"
-                icon={radBralls}
-                opToken={toToken}
-                tokenName="BRA"
-              />
+              <img src={arrowIcon} alt="" />
             </div>
 
-            <button
-              onClick={() => handleShoSwapDetails()}
-              className="card-content-swap-info-btn"
-            >
-              <div className="card-content-swap-info-content">
-                <span>
-                  <span id="amount">1</span>
-                  <span id="buy-token">BRA</span> =
-                  <span id="amount-token-swap">
-                    {(valueTokenB / valueTokenA).toString().slice(0, 8)}
-                  </span>
-                  <span id="swap-token">XRD</span>
-                  <span id="value-money-token"> (${valueTokenA})</span>
-                </span>
-              </div>
-            </button>
+            <Input
+              balance={userBalance}
+              handleCalSwapFromTo={handleCalSwapToFron}
+              opt="To"
+              icon={radBralls}
+              opToken={toToken}
+              tokenName="BRA"
+            />
+
+            <SwapInfo
+              handleShowSwapDetails={handleShoSwapDetails}
+              valueTokenA={valueTokenA}
+              valueTokenB={valueTokenB}
+            />
+
             {showSwapDetails ? (
-              <div className="card-content-swap-details">
-                <div className="minimum-receveid">
-                  <p>Minimum Received</p>
-                  <p className="value">{minimumReceived.toString().slice(0)}</p>
-                </div>
-                <div className="fee">
-                  <p>Price Impact</p>
-                  <p className="value-white">{fee + `%`}</p>
-                </div>
-                <div className="fee">
-                  <p>Liquidity Provider Fee</p>
-                  <p className="value-white">
-                    {(fee * fromToken).toString().slice(0, 8) + ` XRD`}
-                  </p>
-                </div>
-              </div>
+              <Details
+                fee={fee}
+                fromToken={fromToken}
+                minimumReceived={minimumReceived}
+              />
             ) : (
               <div></div>
             )}
 
-            <div className="card-content-action-btn">
+            <div>
               <button
+                className="action-button"
                 onClick={() =>
                   connectedWallet ? swap_xrd_for_bra() : fetchAccountAddress()
                 }
@@ -258,14 +213,14 @@ export function App() {
             </div>
           </div>
         </div>
-        <div className="video-background">
-          <video
-            autoPlay
-            muted
-            loop
-            src="https://assets.website-files.com/6053f7fca5bf627283b582c2/60ba5985f394bf1012c0c83a_Comp%201%20-%20v2-transcode.mp4"
-          ></video>
-        </div>
+      </div>
+      <div>
+        <video
+          autoPlay
+          muted
+          loop
+          src="https://assets.website-files.com/6053f7fca5bf627283b582c2/60ba5985f394bf1012c0c83a_Comp%201%20-%20v2-transcode.mp4"
+        ></video>
       </div>
     </>
   );
