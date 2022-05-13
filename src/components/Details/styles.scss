@@ -1,0 +1,33 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-image: initial;
+  padding: 10px;
+  border-color: #5f6b7e;
+  transition: all 300ms ease-in-out 0s;
+  margin-top: 8px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    line-height: 24px;
+
+    p {
+      font-size: 14px;
+      color: #5f6b7e;
+    }
+
+    strong {
+      color: #51a2ff;
+      font-weight: bold;
+    }
+
+    span {
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
