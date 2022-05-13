@@ -1,0 +1,68 @@
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  header {
+    display: flex;
+    flex-direction: row;
+
+    p {
+      width: 100%;
+      font-size: 18px;
+      padding-right: 32px;
+      font-weight: 500;
+      color: #FFF;
+      cursor: pointer;
+      transition: 500ms;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+
+      .swap {
+        color: #51a2ff;
+        font-weight: bold;
+      }
+    }
+  }
+
+  div {
+    flex: 1 1 0%;
+    place-self: stretch;
+  }
+
+  .wallet-connected {
+    background: linear-gradient(90deg, rgba(8, 14, 162, 1) 0%, rgba(170, 0, 206, 0.7104977733280813) 48%, rgba(46, 239, 252, 1) 100%);
+    padding: 10px;
+    border-radius: 12px;
+    border: hsla(192, 96%, 50%, 1) 2px solid;
+    border-image: initial;
+    transition: all 100ms ease-in-out 0s;
+    filter: brightness(0.9);
+
+    p {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+
+  .wallet-no-connected {
+    background: #12161F;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: #5f6b7e 0px 0px 0px 2px;
+    cursor: none;
+
+    p {
+      color: #5f6b7e;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 300;
+    }
+  }
+}
